@@ -8,10 +8,11 @@ export default class Box extends Component {
           super(props);
           this.handleClick= this.handleClick.bind(this)
       }
-    handleClick(){
-        this.props.checkIfCorrect(this.props.isDifferent);
+    handleClick(evt){
+        this.props.checkIfCorrect(this.props)
     }
     render() {
+        
         return (
             <div onClick={this.handleClick} style={{background: this.props.color}}>
                 

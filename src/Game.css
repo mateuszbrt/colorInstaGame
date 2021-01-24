@@ -1,14 +1,6 @@
-.App {
-  width: 80vw;
-  height: 60vh;
-  background-color: antiquewhite;
- 
-}
-
 .boxes-wrapper{
   background-color: whitesmoke;
-  width: 540px;
-  height: 540px;
+
   display: flex;
   flex-wrap: wrap;
 }

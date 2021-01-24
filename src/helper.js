@@ -7,4 +7,12 @@ function log(base, number) {
     return logarithm.toFixed(5)
 }
 
-export {randomNr,  log}
+function getDiffProportions(diff){
+    let proportions;
+    if (diff === 9 ) return proportions = 540;
+    else if (diff === 16 ) return proportions = 720;
+    else if (diff === 25 ) return proportions = 900;
+    else alert("kurwa")
+}
+
+export {randomNr,  log, getDiffProportions}

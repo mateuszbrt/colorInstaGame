@@ -12,10 +12,11 @@ export default class Box extends Component {
         this.props.checkIfCorrect(this.props)
     }
     render() {
-        
+
         return (
-            <div onClick={this.handleClick} style={{background: this.props.color}}>
-                
+            <div 
+              onClick={this.handleClick} 
+              style={{borderRadius: this.props.form === 1 ? "0px" : "200px",background: this.props.color}}>
             </div>
         )
     }

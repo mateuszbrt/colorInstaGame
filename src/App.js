@@ -7,21 +7,23 @@ export default class App extends Component {
     super(props)
     this.state ={
       showGame:false,
-      difficulty: 1
+      difficulty: 1,
+      form: 1
     }
-    this.handleStartGame = this.handleStartGame.bind(this)
+    this.handleToggleGame = this.handleToggleGame.bind(this)
   }
 
-  handleStartGame(){
+  handleToggleGame(){
     this.state.showGame ? this.setState({showGame:false}) : this.setState({showGame:true}); 
   }
 
-  handleDifficulty(evt,diff){
+  handleDifficulty(evt,value){
+    console.log(evt.target.name, value);
       this.setState({
-      difficulty: diff
+      [evt.target.name]: value
     })
-    // evt.target.style.color = "blue"
   }
+
 
   componentDidMount(){
     this.setState({
@@ -37,18 +39,23 @@ export default class App extends Component {
 
     const gameComponent= (
       <div>
-        <Game boxCount={boxCount}/>
+        <Game form={this.state.form} handleReturnHome={this.handleToggleGame} boxCount={boxCount}/>
       </div>
     )
     const startElements = (
       <div>
-         <h1>Welcome to the game you idiots</h1>
-         <button onClick={this.handleStartGame}>Start the game u dumb fuck</button>
+         <h1>Welcome to the random Insta-Game</h1>
+         <button onClick={this.handleToggleGame}>Press to start the game</button>
          <h4>Difficulty : </h4>
-         <div className="btn-difficulty">
-           <button className={this.state.difficulty === 1 ? "selectedDiff" : "" } onClick={ e => this.handleDifficulty(e, 1)}>Eazy</button>
-           <button className={this.state.difficulty === 2 ? "selectedDiff" : "" } onClick={ e => this.handleDifficulty(e, 2)}>Medium</button>
-           <button className={this.state.difficulty === 3 ? "selectedDiff" : "" } onClick={ e => this.handleDifficulty(e, 3)}>Hard</button>
+         <div className="btn-difficulty-wrapper">
+           <button name="difficulty" className={this.state.difficulty === 1 ? "selected" : "" } onClick={ e => this.handleDifficulty(e, 1)}>Eazy</button>
+           <button name="difficulty" className={this.state.difficulty === 2 ? "selected" : "" } onClick={ e => this.handleDifficulty(e, 2)}>Medium</button>
+           <button name="difficulty" className={this.state.difficulty === 3 ? "selected" : "" } onClick={ e => this.handleDifficulty(e, 3)}>Hard</button>
+         </div>
+         <h4>Form:</h4>
+         <div className="btn-form-wrapper">
+           <button name="form" className={this.state.form === 1 ? "selected" : "" } onClick={ e => this.handleDifficulty(e, 1)}>Rectangle</button>
+           <button name="form"className={this.state.form === 2 ? "selected" : "" } onClick={ e => this.handleDifficulty(e, 2)}>Circle</button>
          </div>
          <h2>Stats :</h2>
          <ul>
